@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.ghost.mapper.DockerImageMapper">
 
+    <!-- boolean insert(DockerImage image); -->
     <insert id="insert">
         insert into images (image_name,image_tag,git_branch,git_message,host,port,code_registry,pull_address,command) values
         (#{imageName},#{imageTag},#{gitBranch},#{gitMessage},#{host},#{port},#{codeRegistry},#{pullAddress},#{command})
     </insert>
+
+    <!-- DockerImage getLastImageByName(String name); -->
+    <select id="getLastImageByName" resultType="com.spring.ghost.bean.DockerImage">
+        select * from images where image_name = #{name}
+    </select>
+
+    <!--  List<DockerImage> getImageByName(String name); -->
+    <select id="getImageByName" resultType="com.spring.ghost.bean.DockerImage">
+        select * from images where image_name = #{name} order by created_at desc
+    </select>
+
+    <!--DockerImage getImageByTag(String tag); -->
+    <select id="getImageByTag" resultType="com.spring.ghost.bean.DockerImage">
+        select * from images where image_tag = #{tag} order by created_at desc
+    </select>
+
+    <!--  boolean deleteImage(String id); -->
+    <delete id="deleteImage">
+        delete from images where id = #{id}
+    </delete>
+
+    <!--DockerImage getImageByPrimaryKey(int id);-->
+    <select id="getImageByPrimaryKey" resultType="com.spring.ghost.bean.DockerImage">
+        select * from images where  id = #{id}
+    </select>
 </mapper>

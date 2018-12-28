@@ -1,4 +1,4 @@
-package com.spring.ghost.bean;
+package com.spring.ghost.dto;
 
 import java.util.List;
 

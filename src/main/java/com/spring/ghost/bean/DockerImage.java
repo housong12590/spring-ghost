@@ -1,11 +1,17 @@
-package com.spring.ghost.dto;
+package com.spring.ghost.bean;
 
+
+import javax.validation.constraints.NotEmpty;
 
 public class DockerImage {
 
+    @NotEmpty(message = "镜像名不能为空")
     private String imageName;
+    @NotEmpty(message = "镜像地址不能为空")
     private String pullAddress;
+    @NotEmpty(message = "镜像TAG不能为空")
     private String imageTag;
+    @NotEmpty(message = "git分支不能为空")
     private String gitBranch;
     private String gitMessage;
     private String codeRegistry;

@@ -1,4 +1,10 @@
-package com.spring.ghost.bean;
+package com.spring.ghost.dto;
+
+import com.spring.ghost.utils.JsonUtil;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+
+import java.util.List;
 
 public class MakerResp {
 
@@ -42,6 +48,20 @@ public class MakerResp {
         return makerResp;
     }
 
+
+    public static MakerResp errorResult(BindingResult result) {
+        StringBuilder sb = new StringBuilder();
+        List<FieldError> errors = result.getFieldErrors();
+        for (FieldError error : errors) {
+            if (sb.length() != 0) {
+                sb.append(", ");
+            }
+            sb.append(error.getField()).append(":")
+                    .append(error.getDefaultMessage());
+        }
+        return failed(sb.toString());
+    }
+
     public int getCode() {
         return code;
     }
@@ -64,5 +84,10 @@ public class MakerResp {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtil.objectToJson(this);
     }
 }

@@ -1,4 +1,4 @@
-package com.spring.ghost.dto;
+package com.spring.ghost.bean;
 
 public class User {
 
