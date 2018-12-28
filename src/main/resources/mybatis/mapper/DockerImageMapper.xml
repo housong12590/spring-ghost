@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.ghost.mapper.DockerImageMapper">
+
+    <insert id="insert">
+        insert into images (image_name,image_tag,git_branch,git_message,host,port,code_registry,pull_address,command) values
+        (#{imageName},#{imageTag},#{gitBranch},#{gitMessage},#{host},#{port},#{codeRegistry},#{pullAddress},#{command})
+    </insert>
+</mapper>

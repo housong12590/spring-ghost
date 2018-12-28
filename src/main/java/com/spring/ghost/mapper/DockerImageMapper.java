@@ -1,6 +1,8 @@
 package com.spring.ghost.mapper;
 
-public class DockerImageMapper {
+import com.spring.ghost.dto.DockerImage;
 
+public interface DockerImageMapper {
 
+    boolean insert(DockerImage image);
 }
